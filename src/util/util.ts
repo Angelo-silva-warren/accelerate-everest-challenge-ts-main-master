@@ -28,18 +28,6 @@ class util {
     return true
   }
 
-  static birthdateValidator (dados: string) {
-    if (dados.length >= 8 && dados.length <= 10) {
-      if (Date.parse(dados)) {
-        return true
-      } else {
-        throw new Error('Data invalida')
-      }
-    } else {
-      throw new Error('Data invalida')
-    }
-  }
-
   static cpfSize (dados: string) {
     if (dados.length <= 14 && dados.length >= 11) {
       return true

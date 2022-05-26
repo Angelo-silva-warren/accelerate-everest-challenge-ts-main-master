@@ -1,7 +1,7 @@
 import Joi from "joi"
 
 const {
-  object, string, boolean,
+  object, string, boolean, date
 } = Joi.types()
 
 const UserSchema = object.keys({
@@ -10,7 +10,7 @@ const UserSchema = object.keys({
 	email_confirmation: string.required(),
 	cpf: string.required() ,
 	cellphone: string.required() ,
-	birthdate: string.required() ,
+	birthdate: date ,
 	email_sms: boolean,
 	whatsapp: boolean,
 	country:string.required() ,

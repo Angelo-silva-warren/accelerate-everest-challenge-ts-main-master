@@ -11,7 +11,6 @@ class UserService {
     )
     const field = util.fieldValidator(dados)
     const number = util.numberValidator(dados.number)
-    const birthdate = util.birthdateValidator(dados.birthdate)
     const cpf = util.cpfSize(dados.cpf)
     const cpfCheck = util.cpfCheck(dados.cpf)
     const cellphone = util.cellphoneSize(dados.cellphone)
@@ -21,7 +20,6 @@ class UserService {
       email,
       field,
       number,
-      birthdate,
       cpf,
       cellphone,
       emailCheck,
