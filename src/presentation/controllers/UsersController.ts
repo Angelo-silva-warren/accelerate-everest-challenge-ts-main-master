@@ -9,7 +9,9 @@ class UserController {
     try {
       const validator = UserService.UserCreate(dados)
       if (validator) {
-        res.status(200).json('criado')
+        res.status(200).json({
+          message: 'criado'
+        })
       }
     } catch (err: any) {
       res.status(400).json(err.message)
