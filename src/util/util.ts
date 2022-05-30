@@ -28,22 +28,6 @@ class util {
     return true
   }
 
-  static cpfSize (dados: string) {
-    if (dados.length <= 14 && dados.length >= 11) {
-      return true
-    } else {
-      throw new Error('Tamanho do CPF Invalido')
-    }
-  }
-
-  static cellphoneSize (dados: string) {
-    if (dados.length >= 11 && dados.length <= 13) {
-      return true
-    } else {
-      throw new Error('Numero de telefone Invlido')
-    }
-  }
-
   static cpfCheck (dados: string) {
     const cpfClean: string = dados.replace(/\.|-/g, '')
 
