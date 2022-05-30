@@ -4,7 +4,7 @@ const { object, string, boolean, date } = Joi.types();
 
 const UserSchema = object
   .keys({
-    full_name: string.required(),
+    full_name: string.min(3).required(),
     email: string.required(),
     email_confirmation: string.required(),
     cpf: string.min(11).max(14).required(),
