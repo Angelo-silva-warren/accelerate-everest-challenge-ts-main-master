@@ -1,21 +1,19 @@
 import Joi from 'joi';
 
-const { object, string, boolean, date } = Joi.types();
-
-const UserSchema = object
+const UserSchema = Joi.object()
   .keys({
-    full_name: string.min(3).required(),
-    email: string.required(),
-    email_confirmation: string.required(),
-    cpf: string.min(11).max(14).required(),
-    cellphone: string.min(11).max(13).required(),
-    birthdate: date,
-    email_sms: boolean,
-    whatsapp: boolean,
-    country: string.required(),
-    postal_code: string.required(),
-    address: string.required(),
-    number: string.required(),
+    full_name: Joi.string().required(),
+    email: Joi.string().required(),
+    email_confirmation: Joi.string().required(),
+    cpf: Joi.string().required(),
+    cellphone: Joi.string().required(),
+    birthdate: Joi.date().required(),
+    email_sms: Joi.boolean(),
+    whatsapp: Joi.boolean(),
+    country: Joi.string().required(),
+    postal_code: Joi.string().required(),
+    address: Joi.string().required(),
+    number: Joi.number().required(),
   })
   .or('email_sms', 'whatsapp')
   .options({

@@ -1,26 +1,22 @@
+import { boolean } from 'joi'
 import Iuser from '../types/UserTypes'
 
 class UserHelper {
-  static emailValidator (email: string, emailConfirmation: string) {
-    if (email === emailConfirmation) {
-      return true
-    } else {
-      throw new Error('Erro email')
-    }
-  }
 
   static emailCheck (dados: string, Mock: Iuser[]) {
     const emailMock: Iuser[] = Object.values(Mock)
     const lista = emailMock.map((item) => item.email)
+    let result : boolean = true
 
     lista.forEach((lista) => {
       if (lista !== dados) {
-        return true
+        result = true
       } else {
-        throw new Error('Email ja existe')
+        result =  false
+        return
       }
     })
-    return true
+    return result
   }
 
   static list (mock: Iuser[]) {

@@ -2,34 +2,18 @@ import UserHelper from '../helper/UserHelper'
 import util from '../../../util/util'
 import Mock from '../mocks/UserMock'
 import Iuser from '../types/UserTypes'
+import UserSchema from '../helper/JoiHelper'
+import { userInfo } from 'os'
 
 class UserService {
-  static UserCreate (dados: Iuser) {
-    const email = UserHelper.emailValidator(
-      dados.email,
-      dados.email_confirmation
-    )
-    const field = util.fieldValidator(dados)
-    const number = util.numberValidator(dados.number)
-    const cpfCheck = util.cpfCheck(dados.cpf)
-    const emailCheck = UserHelper.emailCheck(dados.email, Mock)
-
-    const validator: boolean[] = [
-      email,
-      field,
-      number,
-      emailCheck,
-      cpfCheck
-    ]
-
-    if (validator) {
-      // let id: number = 0;
-      // id = Mock.length + 1;
-      // dados['id'] = id;
-      Mock.push(dados)
-      console.log(Mock)
+  static async UserCreate (dados: Iuser) {
+    try {
+      const newUser = await UserSchema.validateAsync(dados)
+      Mock.push(newUser)
+      return { code: 201, msg: {message : "usuario criado"}}
+    } catch (error) {
+      return { code: 422, msg : error}
     }
-    return validator
   }
 }
 

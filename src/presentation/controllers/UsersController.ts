@@ -4,18 +4,12 @@ import UserList from '../../domain/user/services/UserListService'
 import Mock from '../../domain/user/mocks/UserMock'
 
 class UserController {
-  static create (req: Request, res: Response) {
+  static async create (req: Request, res: Response) {
     const dados = req.body
-    try {
-      const validator = UserService.UserCreate(dados)
-      if (validator) {
-        res.status(200).json({
-          message: 'criado'
-        })
-      }
-    } catch (err: any) {
-      res.status(400).json(err.message)
-    }
+
+    const createUser =  await UserService.UserCreate(dados)
+
+    res.status(createUser.code).json(createUser.msg)
   }
 
   static list (req: Request, res: Response) {
