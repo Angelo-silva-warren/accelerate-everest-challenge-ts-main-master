@@ -11,6 +11,7 @@ const UserSchema = Joi.object()
     email_sms: Joi.boolean(),
     whatsapp: Joi.boolean(),
     country: Joi.string().required(),
+    city: Joi.string().required(),
     postal_code: Joi.string().required(),
     address: Joi.string().required(),
     number: Joi.number().required(),
