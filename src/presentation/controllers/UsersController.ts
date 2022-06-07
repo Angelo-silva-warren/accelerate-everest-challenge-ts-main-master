@@ -14,7 +14,6 @@ class UserController {
 
   static list (req: Request, res: Response) {
     const createList = UserList.CreateList(Mock)
-    console.log(createList)
     res.json(createList)
   }
 }

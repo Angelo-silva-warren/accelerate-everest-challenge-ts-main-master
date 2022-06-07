@@ -4,17 +4,15 @@ class UserHelper {
   static emailCheck(dados: string, Mock: Iuser[]) {
     const emailMock: Iuser[] = Object.values(Mock);
     const lista = emailMock.map((item) => item.email);
-    let result: boolean = true;
 
     lista.forEach((lista) => {
       if (lista !== dados) {
-        result = true;
+        return true;
       } else {
-        result = false;
-        return;
+        throw new Error("Email Ja Cadastrado");
       }
     });
-    return result;
+    return true;
   }
 
   static list(mock: Iuser[]) {

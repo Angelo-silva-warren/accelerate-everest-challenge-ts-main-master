@@ -7,7 +7,7 @@ class util {
       if (cpfClean[i] !== test) {
         break;
       } else if (i === cpfClean.length - 1) {
-        return false;
+        throw new Error("CPF invalido");
       }
     }
 
@@ -36,9 +36,9 @@ class util {
     }
 
     const firstDigit = calcDigit();
-    if (firstDigit !== confirmationDigits[0]) return false;
+    if (firstDigit !== confirmationDigits[0]) throw new Error("CPF invalido");
     cpfArray.push(firstDigit);
-    if (calcDigit(0) !== confirmationDigits[1]) return false;
+    if (calcDigit(0) !== confirmationDigits[1]) throw new Error("CPF invalido");
 
     return true;
   }
