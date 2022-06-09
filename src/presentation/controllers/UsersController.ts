@@ -7,7 +7,7 @@ class UserController {
   static async create (req: Request, res: Response) {
     const dados = req.body
 
-    const createUser =  await UserService.UserCreate(dados)
+    const createUser = await UserService.UserCreate(dados)
 
     res.status(createUser.code).json(createUser.msg)
   }

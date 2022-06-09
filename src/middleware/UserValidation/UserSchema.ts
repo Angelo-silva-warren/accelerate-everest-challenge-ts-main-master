@@ -1,4 +1,4 @@
-import Joi from 'joi';
+import Joi from 'joi'
 
 const UserSchema = Joi.object()
   .keys({
@@ -14,11 +14,11 @@ const UserSchema = Joi.object()
     city: Joi.string().required(),
     postal_code: Joi.string().length(8).required(),
     address: Joi.string().required(),
-    number: Joi.number().required(),
+    number: Joi.number().required()
   })
   .or('email_sms', 'whatsapp')
   .options({
-    abortEarly: false,
-  });
+    abortEarly: false
+  })
 
-export default UserSchema;
+export default UserSchema
