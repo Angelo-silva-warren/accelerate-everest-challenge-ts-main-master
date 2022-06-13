@@ -2,10 +2,16 @@ import { Router } from 'express'
 import UserValidation from '../middleware/UserValidation'
 import UserController from './controllers/UsersController'
 
-const router = Router()
+export default class UserRouter {
+  router = Router()
 
-router.post('/customer', UserValidation , UserController.create)
+  constructor () {
+    this.routes()
+  }
 
-router.get('/user', UserController.list)
+  async routes ():Promise<void> {
+    this.router.post('/customer', UserValidation, UserController.create)
 
-export { router }
+    this.router.get('/user', UserController.list)
+  }
+}
