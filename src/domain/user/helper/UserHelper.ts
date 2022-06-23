@@ -1,8 +1,9 @@
 import Iuser from '../types/UserTypes'
 
 class UserHelper {
-  static emailCheck (dados: string, Mock: Iuser[]) {
+  emailCheck (dados: string, Mock: Iuser[]) {
     const emailMock: Iuser[] = Object.values(Mock)
+    // this.repository.getFilter('email')
     const lista = emailMock.map((item) => item.email)
 
     lista.forEach((lista) => {
@@ -15,7 +16,7 @@ class UserHelper {
     return true
   }
 
-  static list (mock: Iuser[]) {
+  list (mock: Iuser[]) {
     const mocks: Iuser[] = Object.values(mock)
     const listaEmail = mocks.map((item) => item.email)
     const listaName = mocks.map((item) => item.full_name)

@@ -1,5 +1,5 @@
 class util {
-  static cpfCheck (dados: string) {
+  cpfCheck (dados: string) {
     const cpfClean: string = dados.replace(/\.|-/g, '')
 
     const test = cpfClean[0]
