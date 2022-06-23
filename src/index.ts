@@ -1,8 +1,11 @@
+import 'reflect-metadata'
+import './di/index'
 import express from 'express'
 import UserRouter from './presentation/Routes'
+import { container } from 'tsyringe'
 
 const app = express()
-const userRouter = new UserRouter()
+const userRouter = container.resolve(UserRouter)
 
 app.use(express.json())
 app.use(userRouter.router)
