@@ -1,17 +1,18 @@
 import Mock from '../mocks/UserMock'
-import Iuser from '../types/UserTypes'
-import util from '../../../util/util'
-import UserHelper from '../helper/UserHelper'
+import Iuser from '../interface/UserTypes'
 import { inject, injectable } from 'tsyringe'
+import { Iutil } from '../interface/util/UtilTypes'
+import { Ihelper } from '../interface/domain/helper/HelperTypes'
+import { IuserCreate } from '../interface/domain/services/UserCreateTypes'
 
 @injectable()
-class UserService {
-  util : util
-  userHelper : UserHelper
+class UserService implements IuserCreate {
+  util : Iutil
+  userHelper : Ihelper
 
   constructor (
-    @inject('Util')util : util,
-    @inject('UserHelper')userHelper : UserHelper) {
+    @inject('Util')util : Iutil,
+    @inject('UserHelper')userHelper : Ihelper) {
     this.util = util
     this.userHelper = userHelper
   }

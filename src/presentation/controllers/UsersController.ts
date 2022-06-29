@@ -1,12 +1,13 @@
 import { Request, Response } from 'express'
 import { inject, injectable } from 'tsyringe'
-import UserService from '../../domain/user/services/UserCreateService'
+import { Iusercontroller } from '../../domain/user/interface/domain/controller/UserControllerTypes'
+import { IuserCreate } from '../../domain/user/interface/domain/services/UserCreateTypes'
 
 @injectable()
-class UserController {
-  userService : UserService
+class UserController implements Iusercontroller {
+  userService : IuserCreate
   constructor (
-    @inject('UserService') userService: UserService) {
+    @inject('UserService') userService: IuserCreate) {
     this.userService = userService
   }
 

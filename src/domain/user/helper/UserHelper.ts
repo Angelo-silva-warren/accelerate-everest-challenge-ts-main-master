@@ -1,7 +1,8 @@
-import Iuser from '../types/UserTypes'
+import { Ihelper } from '../interface/domain/helper/HelperTypes'
+import Iuser from '../interface/UserTypes'
 
-class UserHelper {
-  emailCheck (dados: string, Mock: Iuser[]) {
+class UserHelper implements Ihelper {
+  emailCheck (dados: string, Mock: Iuser[]) : boolean {
     const emailMock: Iuser[] = Object.values(Mock)
     // this.repository.getFilter('email')
     const lista = emailMock.map((item) => item.email)
@@ -16,7 +17,7 @@ class UserHelper {
     return true
   }
 
-  list (mock: Iuser[]) {
+  list (mock: Iuser[]): object[] {
     const mocks: Iuser[] = Object.values(mock)
     const listaEmail = mocks.map((item) => item.email)
     const listaName = mocks.map((item) => item.full_name)

@@ -1,12 +1,13 @@
 import { inject, injectable } from 'tsyringe'
-import UserHelper from '../helper/UserHelper'
-import Iuser from '../types/UserTypes'
+import { Ihelper } from '../interface/domain/helper/HelperTypes'
+import { Iuserlist } from '../interface/domain/services/UserListTypes'
+import Iuser from '../interface/UserTypes'
 
 @injectable()
-class UserList {
-  userHelper : UserHelper
+class UserList implements Iuserlist {
+  userHelper : Ihelper
   constructor (
-    @inject('UserHelper')userHelper : UserHelper) {
+    @inject('UserHelper')userHelper : Ihelper) {
     this.userHelper = userHelper
   }
 

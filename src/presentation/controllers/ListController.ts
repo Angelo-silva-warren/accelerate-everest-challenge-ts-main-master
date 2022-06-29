@@ -1,14 +1,15 @@
 import { Request, Response } from 'express'
-import UserList from '../../domain/user/services/UserListService'
 import Mock from '../../domain/user/mocks/UserMock'
 import { inject, injectable } from 'tsyringe'
+import { Iuserlist } from '../../domain/user/interface/domain/services/UserListTypes'
+import { Ilistcontroller } from '../../domain/user/interface/domain/controller/ListControllerTypes'
 
 @injectable()
-export default class ListController {
-  userList : UserList
+export default class ListController implements Ilistcontroller {
+  userList : Iuserlist
 
   constructor (
-    @inject('UserList')userList : UserList) {
+    @inject('UserList')userList : Iuserlist) {
     this.userList = userList
   }
 
