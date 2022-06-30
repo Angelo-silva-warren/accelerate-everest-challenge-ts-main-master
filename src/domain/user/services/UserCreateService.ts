@@ -1,9 +1,9 @@
 import Mock from '../mocks/UserMock'
-import Iuser from '../interface/UserTypes'
 import { inject, injectable } from 'tsyringe'
-import { Iutil } from '../interface/util/UtilTypes'
-import { Ihelper } from '../interface/domain/helper/HelperTypes'
-import { IuserCreate } from '../interface/domain/services/UserCreateTypes'
+import { IuserCreate } from '../../../interface/domain/services/UserCreateTypes'
+import { Iutil } from '../../../interface/util/UtilTypes'
+import { Ihelper } from '../../../interface/domain/helper/HelperTypes'
+import Iuser from '../../../interface/UserTypes'
 
 @injectable()
 class UserService implements IuserCreate {

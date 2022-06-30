@@ -1,4 +1,4 @@
-import Iuser from '../interface/UserTypes'
+import Iuser from '../../../interface/UserTypes'
 
 const User: Iuser[] = []
 

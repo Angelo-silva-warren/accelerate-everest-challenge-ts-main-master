@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe'
-import { Ihelper } from '../interface/domain/helper/HelperTypes'
-import { Iuserlist } from '../interface/domain/services/UserListTypes'
-import Iuser from '../interface/UserTypes'
+import { Ihelper } from '../../../interface/domain/helper/HelperTypes'
+import { Iuserlist } from '../../../interface/domain/services/UserListTypes'
+import Iuser from '../../../interface/UserTypes'
 
 @injectable()
 class UserList implements Iuserlist {

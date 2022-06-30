@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import { inject, injectable } from 'tsyringe'
-import { Iusercontroller } from '../../domain/user/interface/domain/controller/UserControllerTypes'
-import { IuserCreate } from '../../domain/user/interface/domain/services/UserCreateTypes'
+import { Iusercontroller } from '../../interface/domain/controller/UserControllerTypes'
+import { IuserCreate } from '../../interface/domain/services/UserCreateTypes'
 
 @injectable()
 class UserController implements Iusercontroller {

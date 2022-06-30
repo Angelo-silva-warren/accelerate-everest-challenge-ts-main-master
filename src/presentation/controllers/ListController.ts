@@ -1,8 +1,8 @@
 import { Request, Response } from 'express'
 import Mock from '../../domain/user/mocks/UserMock'
 import { inject, injectable } from 'tsyringe'
-import { Iuserlist } from '../../domain/user/interface/domain/services/UserListTypes'
-import { Ilistcontroller } from '../../domain/user/interface/domain/controller/ListControllerTypes'
+import { Ilistcontroller } from '../../interface/domain/controller/ListControllerTypes'
+import { Iuserlist } from '../../interface/domain/services/UserListTypes'
 
 @injectable()
 export default class ListController implements Ilistcontroller {

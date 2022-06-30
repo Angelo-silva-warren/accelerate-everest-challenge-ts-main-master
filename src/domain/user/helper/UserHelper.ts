@@ -1,5 +1,5 @@
-import { Ihelper } from '../interface/domain/helper/HelperTypes'
-import Iuser from '../interface/UserTypes'
+import { Ihelper } from '../../../interface/domain/helper/HelperTypes'
+import Iuser from '../../../interface/UserTypes'
 
 class UserHelper implements Ihelper {
   emailCheck (dados: string, Mock: Iuser[]) : boolean {

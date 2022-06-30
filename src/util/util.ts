@@ -1,4 +1,4 @@
-import { Iutil } from '../domain/user/interface/util/UtilTypes'
+import { Iutil } from '../interface/util/UtilTypes'
 
 class util implements Iutil {
   cpfCheck (dados: string): boolean {
