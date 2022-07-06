@@ -1,18 +1,21 @@
 import { inject, injectable } from 'tsyringe'
 import { Ihelper } from '../../../interface/domain/helper/HelperTypes'
+import { IuserRepository } from '../../../interface/domain/Repository/RepositoryTypes'
 import { Iuserlist } from '../../../interface/domain/services/UserListTypes'
-import Iuser from '../../../interface/UserTypes'
 
 @injectable()
 class UserList implements Iuserlist {
   userHelper : Ihelper
+  userRepository : IuserRepository
   constructor (
-    @inject('UserHelper')userHelper : Ihelper) {
+    @inject('UserHelper')userHelper : Ihelper,
+    @inject('UserRepository')userRepository : IuserRepository) {
     this.userHelper = userHelper
+    this.userRepository = userRepository
   }
 
-  CreateList (Mock: Iuser[]) {
-    const lista = this.userHelper.list(Mock)
+  CreateList () {
+    const lista = this.userRepository.readall()
     return lista
   }
 }
