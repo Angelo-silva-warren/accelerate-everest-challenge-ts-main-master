@@ -1,28 +1,31 @@
-import Mock from '../mocks/UserMock'
 import { inject, injectable } from 'tsyringe'
 import { IuserCreate } from '../../../interface/domain/services/UserCreateTypes'
 import { Iutil } from '../../../interface/util/UtilTypes'
 import { Ihelper } from '../../../interface/domain/helper/HelperTypes'
 import Iuser from '../../../interface/UserTypes'
+import { IuserRepository } from '../../../interface/domain/Repository/RepositoryTypes'
 
 @injectable()
 class UserService implements IuserCreate {
   util : Iutil
   userHelper : Ihelper
+  userRepository : IuserRepository
 
   constructor (
     @inject('Util')util : Iutil,
-    @inject('UserHelper')userHelper : Ihelper) {
+    @inject('UserHelper')userHelper : Ihelper,
+    @inject('UserRepository')userRepository : IuserRepository) {
     this.util = util
     this.userHelper = userHelper
+    this.userRepository = userRepository
   }
 
-  async UserCreate (dados: Iuser) {
+  UserCreate (dados: Iuser) {
     try {
       this.util.cpfCheck(dados.cpf)
-      this.userHelper.emailCheck(dados.email, Mock)
+      this.userHelper.emailCheck(dados.email, this.userRepository.database)
 
-      Mock.push(dados)
+      this.userRepository.create(dados)
       return { code: 201, msg: 'usuario criado' }
     } catch (error) {
       let message = 'Unkown Error'
