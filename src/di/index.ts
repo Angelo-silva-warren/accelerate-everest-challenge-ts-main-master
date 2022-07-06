@@ -11,6 +11,8 @@ import { Iuserlist } from '../interface/domain/services/UserListTypes'
 import { IuserCreate } from '../interface/domain/services/UserCreateTypes'
 import { Iusercontroller } from '../interface/domain/controller/UserControllerTypes'
 import { Ilistcontroller } from '../interface/domain/controller/ListControllerTypes'
+import { IuserRepository } from '../interface/domain/Repository/RepositoryTypes'
+import UserRepository from '../domain/user/Repository/UserRepository'
 
 // Router
 container.registerSingleton<Ilistcontroller>(
@@ -40,4 +42,9 @@ container.registerSingleton<Ihelper>(
 container.registerSingleton<Iutil>(
   'Util',
   util
+)
+// UserRepository
+container.registerSingleton<IuserRepository>(
+  'UserRepository',
+  UserRepository
 )
