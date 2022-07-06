@@ -1,5 +1,4 @@
 import { Request, Response } from 'express'
-import Mock from '../../domain/user/mocks/UserMock'
 import { inject, injectable } from 'tsyringe'
 import { Ilistcontroller } from '../../interface/domain/controller/ListControllerTypes'
 import { Iuserlist } from '../../interface/domain/services/UserListTypes'
@@ -14,7 +13,7 @@ export default class ListController implements Ilistcontroller {
   }
 
   list = async (req: Request, res: Response) => {
-    const createList = this.userList.CreateList(Mock)
+    const createList = await this.userList.CreateList()
     res.json(createList)
   }
 }

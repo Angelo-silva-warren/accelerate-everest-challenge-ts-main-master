@@ -10,5 +10,5 @@ export interface IuserCreate {
   util : Iutil
   userHelper : Ihelper
 
-  UserCreate(dados: Iuser): Promise<serviceResponse>
+  UserCreate(dados: Iuser): serviceResponse
 }
