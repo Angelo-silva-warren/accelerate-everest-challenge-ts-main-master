@@ -4,7 +4,6 @@ import Iuser from '../../../interface/UserTypes'
 class UserHelper implements Ihelper {
   emailCheck (dados: string, Mock: Iuser[]) : boolean {
     const emailMock: Iuser[] = Object.values(Mock)
-    // this.repository.getFilter('email')
     const lista = emailMock.map((item) => item.email)
 
     lista.forEach((lista) => {
