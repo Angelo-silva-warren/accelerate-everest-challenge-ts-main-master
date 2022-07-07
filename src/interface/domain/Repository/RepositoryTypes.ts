@@ -1,7 +1,7 @@
-import Iuser from '../../UserTypes'
+import IUser from '../../UserTypes'
 
-export interface IuserRepository {
-  database : Iuser[]
-  create(entity: Iuser): void
-  readall(): Iuser[]
+export interface IUserRepository {
+  database : IUser[]
+  create(entity: IUser): void
+  readall(): IUser[]
 }

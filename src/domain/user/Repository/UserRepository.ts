@@ -1,14 +1,14 @@
 import { injectable } from 'tsyringe'
-import Iuser from '../../../interface/UserTypes'
+import IUser from '../../../interface/UserTypes'
 
 @injectable()
 export default class UserRepository {
-  database : Iuser[]
+  database : IUser[]
   constructor () {
     this.database = []
   }
 
-  create (entity : Iuser) : void {
+  create (entity : IUser) : void {
     this.database.push(entity)
   }
 

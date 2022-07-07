@@ -1,26 +1,26 @@
 import { inject, injectable } from 'tsyringe'
-import { IuserCreate } from '../../../interface/domain/services/UserCreateTypes'
-import { Iutil } from '../../../interface/util/UtilTypes'
-import { Ihelper } from '../../../interface/domain/helper/HelperTypes'
-import Iuser from '../../../interface/UserTypes'
-import { IuserRepository } from '../../../interface/domain/Repository/RepositoryTypes'
+import { IUserCreate } from '../../../interface/domain/services/UserCreateTypes'
+import { IUtil } from '../../../interface/util/UtilTypes'
+import { IHelper } from '../../../interface/domain/helper/HelperTypes'
+import IUser from '../../../interface/UserTypes'
+import { IUserRepository } from '../../../interface/domain/Repository/RepositoryTypes'
 
 @injectable()
-class UserService implements IuserCreate {
-  util : Iutil
-  userHelper : Ihelper
-  userRepository : IuserRepository
+class UserService implements IUserCreate {
+  util : IUtil
+  userHelper : IHelper
+  userRepository : IUserRepository
 
   constructor (
-    @inject('Util')util : Iutil,
-    @inject('UserHelper')userHelper : Ihelper,
-    @inject('UserRepository')userRepository : IuserRepository) {
+    @inject('Util')util : IUtil,
+    @inject('UserHelper')userHelper : IHelper,
+    @inject('UserRepository')userRepository : IUserRepository) {
     this.util = util
     this.userHelper = userHelper
     this.userRepository = userRepository
   }
 
-  UserCreate (dados: Iuser) {
+  UserCreate (dados: IUser) {
     try {
       this.util.cpfCheck(dados.cpf)
       this.userHelper.emailCheck(dados.email, this.userRepository.database)

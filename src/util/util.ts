@@ -1,6 +1,6 @@
-import { Iutil } from '../interface/util/UtilTypes'
+import { IUtil } from '../interface/util/UtilTypes'
 
-class util implements Iutil {
+class util implements IUtil {
   cpfCheck (dados: string): boolean {
     const cpfClean: string = dados.replace(/\.|-/g, '')
 

@@ -1,14 +1,14 @@
-import Iuser from '../../UserTypes'
-import { Iutil } from '../../util/UtilTypes'
-import { Ihelper } from '../helper/HelperTypes'
+import IUser from '../../UserTypes'
+import { IUtil } from '../../util/UtilTypes'
+import { IHelper } from '../helper/HelperTypes'
 
 interface serviceResponse{
   code: number;
   msg?: string;
 }
-export interface IuserCreate {
-  util : Iutil
-  userHelper : Ihelper
+export interface IUserCreate {
+  util : IUtil
+  userHelper : IHelper
 
-  UserCreate(dados: Iuser): serviceResponse
+  UserCreate(dados: IUser): serviceResponse
 }

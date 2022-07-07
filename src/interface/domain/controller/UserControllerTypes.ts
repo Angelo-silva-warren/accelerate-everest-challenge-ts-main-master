@@ -1,7 +1,7 @@
-import { IuserCreate } from '../services/UserCreateTypes'
+import { IUserCreate } from '../services/UserCreateTypes'
 import { Request, Response } from 'express'
 
-export interface Iusercontroller {
-  userService : IuserCreate
+export interface IUsercontroller {
+  userService : IUserCreate
   handle: (req: Request, res: Response) => Promise<void>
 }

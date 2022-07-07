@@ -1,5 +1,5 @@
-import Iuser from '../../UserTypes'
+import IUser from '../../UserTypes'
 
-export interface Ihelper {
-  emailCheck(dados: string, Mock: Iuser[]): boolean
+export interface IHelper {
+  emailCheck(dados: string, Mock: IUser[]): boolean
 }

@@ -1,14 +1,14 @@
 import { Request, Response } from 'express'
 import { inject, injectable } from 'tsyringe'
-import { Ilistcontroller } from '../../interface/domain/controller/ListControllerTypes'
-import { Iuserlist } from '../../interface/domain/services/UserListTypes'
+import { IListcontroller } from '../../interface/domain/controller/ListControllerTypes'
+import { IUserlist } from '../../interface/domain/services/UserListTypes'
 
 @injectable()
-export default class ListController implements Ilistcontroller {
-  userList : Iuserlist
+export default class ListController implements IListcontroller {
+  userList : IUserlist
 
   constructor (
-    @inject('UserList')userList : Iuserlist) {
+    @inject('UserList')userList : IUserlist) {
     this.userList = userList
   }
 

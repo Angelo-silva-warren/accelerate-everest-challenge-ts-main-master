@@ -1,15 +1,15 @@
 import { inject, injectable } from 'tsyringe'
-import { Ihelper } from '../../../interface/domain/helper/HelperTypes'
-import { IuserRepository } from '../../../interface/domain/Repository/RepositoryTypes'
-import { Iuserlist } from '../../../interface/domain/services/UserListTypes'
+import { IHelper } from '../../../interface/domain/helper/HelperTypes'
+import { IUserRepository } from '../../../interface/domain/Repository/RepositoryTypes'
+import { IUserlist } from '../../../interface/domain/services/UserListTypes'
 
 @injectable()
-class UserList implements Iuserlist {
-  userHelper : Ihelper
-  userRepository : IuserRepository
+class UserList implements IUserlist {
+  userHelper : IHelper
+  userRepository : IUserRepository
   constructor (
-    @inject('UserHelper')userHelper : Ihelper,
-    @inject('UserRepository')userRepository : IuserRepository) {
+    @inject('UserHelper')userHelper : IHelper,
+    @inject('UserRepository')userRepository : IUserRepository) {
     this.userHelper = userHelper
     this.userRepository = userRepository
   }

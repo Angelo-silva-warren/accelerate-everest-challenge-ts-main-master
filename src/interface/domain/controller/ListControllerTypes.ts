@@ -1,8 +1,8 @@
 import { Request, Response } from 'express'
-import { Iuserlist } from '../services/UserListTypes'
+import { IUserlist } from '../services/UserListTypes'
 
-export interface Ilistcontroller {
-  userList : Iuserlist
+export interface IListcontroller {
+  userList : IUserlist
 
   list: (req: Request, res: Response) => Promise<void>
 }

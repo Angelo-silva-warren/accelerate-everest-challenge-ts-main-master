@@ -1,7 +1,7 @@
-import Iuser from '../../UserTypes'
-import { Ihelper } from '../helper/HelperTypes'
+import IUser from '../../UserTypes'
+import { IHelper } from '../helper/HelperTypes'
 
-export interface Iuserlist {
-  userHelper : Ihelper
-  CreateList(): Iuser[]
+export interface IUserlist {
+  userHelper : IHelper
+  CreateList(): IUser[]
 }

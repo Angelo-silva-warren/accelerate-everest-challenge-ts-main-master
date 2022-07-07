@@ -5,46 +5,46 @@ import UserList from '../domain/user/services/UserListService'
 import ListController from '../presentation/controllers/ListController'
 import UserController from '../presentation/controllers/UsersController'
 import util from '../util/util'
-import { Iutil } from '../interface/util/UtilTypes'
-import { Ihelper } from '../interface/domain/helper/HelperTypes'
-import { Iuserlist } from '../interface/domain/services/UserListTypes'
-import { IuserCreate } from '../interface/domain/services/UserCreateTypes'
-import { Iusercontroller } from '../interface/domain/controller/UserControllerTypes'
-import { Ilistcontroller } from '../interface/domain/controller/ListControllerTypes'
-import { IuserRepository } from '../interface/domain/Repository/RepositoryTypes'
+import { IUtil } from '../interface/util/UtilTypes'
+import { IHelper } from '../interface/domain/helper/HelperTypes'
+import { IUserlist } from '../interface/domain/services/UserListTypes'
+import { IUserCreate } from '../interface/domain/services/UserCreateTypes'
+import { IUsercontroller } from '../interface/domain/controller/UserControllerTypes'
+import { IListcontroller } from '../interface/domain/controller/ListControllerTypes'
+import { IUserRepository } from '../interface/domain/Repository/RepositoryTypes'
 import UserRepository from '../domain/user/Repository/UserRepository'
 
 // Router
-container.registerSingleton<Ilistcontroller>(
+container.registerSingleton<IListcontroller>(
   'ListController',
   ListController
 )
-container.registerSingleton<Iusercontroller>(
+container.registerSingleton<IUsercontroller>(
   'UserController',
   UserController
 )
 // UserControoler
-container.registerSingleton<IuserCreate>(
+container.registerSingleton<IUserCreate>(
   'UserService',
   UserService
 )
 // ListController
-container.registerSingleton<Iuserlist>(
+container.registerSingleton<IUserlist>(
   'UserList',
   UserList
 )
 // UserListService
-container.registerSingleton<Ihelper>(
+container.registerSingleton<IHelper>(
   'UserHelper',
   UserHelper
 )
 // UserCreatService
-container.registerSingleton<Iutil>(
+container.registerSingleton<IUtil>(
   'Util',
   util
 )
 // UserRepository
-container.registerSingleton<IuserRepository>(
+container.registerSingleton<IUserRepository>(
   'UserRepository',
   UserRepository
 )

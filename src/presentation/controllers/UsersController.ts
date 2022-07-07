@@ -1,13 +1,13 @@
 import { Request, Response } from 'express'
 import { inject, injectable } from 'tsyringe'
-import { Iusercontroller } from '../../interface/domain/controller/UserControllerTypes'
-import { IuserCreate } from '../../interface/domain/services/UserCreateTypes'
+import { IUsercontroller } from '../../interface/domain/controller/UserControllerTypes'
+import { IUserCreate } from '../../interface/domain/services/UserCreateTypes'
 
 @injectable()
-class UserController implements Iusercontroller {
-  userService : IuserCreate
+class UserController implements IUsercontroller {
+  userService : IUserCreate
   constructor (
-    @inject('UserService') userService: IuserCreate) {
+    @inject('UserService') userService: IUserCreate) {
     this.userService = userService
   }
 
