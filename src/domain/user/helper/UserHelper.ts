@@ -1,18 +1,14 @@
-import { Ihelper } from '../../../interface/domain/helper/HelperTypes'
-import Iuser from '../../../interface/UserTypes'
+import { IHelper } from '../../../interface/domain/helper/HelperTypes'
+import IUser from '../../../interface/UserTypes'
 
-class UserHelper implements Ihelper {
-  emailCheck (dados: string, Mock: Iuser[]) : boolean {
-    const emailMock: Iuser[] = Object.values(Mock)
-    const lista = emailMock.map((item) => item.email)
+class UserHelper implements IHelper {
+  emailCheck (dados: string, Mock: IUser[]) : boolean {
+    const emailMock: IUser[] = Object.values(Mock)
+    const emailData = emailMock.map((user : IUser) => user.email)
 
-    lista.forEach((lista) => {
-      if (lista !== dados) {
-        return true
-      } else {
-        throw new Error('Email Ja Cadastrado')
-      }
-    })
+    if (emailData.includes(dados)) {
+      throw new Error('Email Ja Cadastrado')
+    }
     return true
   }
 }
