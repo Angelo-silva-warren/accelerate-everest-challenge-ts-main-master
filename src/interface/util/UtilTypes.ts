@@ -1,3 +1,3 @@
 export interface IUtil{
-  cpfCheck(dados: string): boolean
+  cpfCheck(dados: string): void
 }
