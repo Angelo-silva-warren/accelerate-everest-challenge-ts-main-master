@@ -18,7 +18,7 @@ export default class UserRouter {
     this.routes()
   }
 
-  async routes ():Promise<void> {
+  async routes (): Promise<void> {
     this.router.post('/customer', UserValidation, this.userController.handle)
 
     this.router.get('/user', this.userList.list)

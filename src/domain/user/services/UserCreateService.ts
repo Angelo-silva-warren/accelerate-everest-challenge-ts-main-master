@@ -20,7 +20,10 @@ export default class UserService implements IUserCreate {
     this.userRepository = userRepository
   }
 
-  userCreate (dados: IUser) {
+  userCreate (dados: IUser) : {
+    code: number;
+    msg: string;
+} {
     try {
       this.util.cpfCheck(dados.cpf)
       this.userHelper.emailCheck(dados.email, this.userRepository.database)

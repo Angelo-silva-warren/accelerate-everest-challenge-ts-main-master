@@ -11,7 +11,7 @@ export default class UserController implements IUsercontroller {
     this.userService = userService
   }
 
-  handle = async (req: Request, res: Response) => {
+  handle = async (req: Request, res: Response) : Promise<void> => {
     const dados = req.body
 
     const createUser = await this.userService.userCreate(dados)
