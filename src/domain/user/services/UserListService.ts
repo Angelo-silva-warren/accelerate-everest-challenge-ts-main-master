@@ -4,7 +4,7 @@ import { IUserRepository } from '../../../interface/domain/Repository/Repository
 import { IUserlist } from '../../../interface/domain/services/UserListTypes'
 
 @injectable()
-class UserList implements IUserlist {
+export default class UserList implements IUserlist {
   userHelper : IHelper
   userRepository : IUserRepository
   constructor (
@@ -19,5 +19,3 @@ class UserList implements IUserlist {
     return lista
   }
 }
-
-export default UserList

@@ -1,4 +1,4 @@
-interface IUser {
+export default interface IUser {
   full_name: string;
   email: string;
   email_confirmation: string;
@@ -13,5 +13,3 @@ interface IUser {
   address: string;
   number: number;
 }
-
-export default IUser

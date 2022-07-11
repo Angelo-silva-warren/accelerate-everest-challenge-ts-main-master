@@ -4,7 +4,7 @@ import { IUsercontroller } from '../../interface/domain/controller/UserControlle
 import { IUserCreate } from '../../interface/domain/services/UserCreateTypes'
 
 @injectable()
-class UserController implements IUsercontroller {
+export default class UserController implements IUsercontroller {
   userService : IUserCreate
   constructor (
     @inject('UserService') userService: IUserCreate) {
@@ -18,5 +18,3 @@ class UserController implements IUsercontroller {
     res.status(createUser.code).json(createUser.msg)
   }
 }
-
-export default UserController

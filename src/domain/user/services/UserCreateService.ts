@@ -6,7 +6,7 @@ import IUser from '../../../interface/UserTypes'
 import { IUserRepository } from '../../../interface/domain/Repository/RepositoryTypes'
 
 @injectable()
-class UserService implements IUserCreate {
+export default class UserService implements IUserCreate {
   util : IUtil
   userHelper : IHelper
   userRepository : IUserRepository
@@ -34,5 +34,3 @@ class UserService implements IUserCreate {
     }
   }
 }
-
-export default UserService

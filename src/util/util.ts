@@ -1,6 +1,6 @@
 import { IUtil } from '../interface/util/UtilTypes'
 
-class util implements IUtil {
+export default class util implements IUtil {
   cpfCheck (dados: string): void {
     const cpfClean: string = dados.replace(/\.|-/g, '')
 
@@ -43,5 +43,3 @@ class util implements IUtil {
     if (calcDigit(0) !== confirmationDigits[1]) throw new Error('CPF invalido')
   }
 }
-
-export default util
