@@ -3,5 +3,5 @@ import { IHelper } from '../helper/HelperTypes'
 
 export interface IUserlist {
   userHelper : IHelper
-  CreateList(): IUser[]
+  createList(): IUser[]
 }

@@ -14,7 +14,7 @@ class UserController implements IUsercontroller {
   handle = async (req: Request, res: Response) => {
     const dados = req.body
 
-    const createUser = await this.userService.UserCreate(dados)
+    const createUser = await this.userService.userCreate(dados)
     res.status(createUser.code).json(createUser.msg)
   }
 }

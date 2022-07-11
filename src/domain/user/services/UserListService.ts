@@ -14,8 +14,8 @@ class UserList implements IUserlist {
     this.userRepository = userRepository
   }
 
-  CreateList () {
-    const lista = this.userRepository.readall()
+  createList () {
+    const lista = this.userRepository.readAll()
     return lista
   }
 }

@@ -10,5 +10,5 @@ export interface IUserCreate {
   util : IUtil
   userHelper : IHelper
 
-  UserCreate(dados: IUser): serviceResponse
+  userCreate(dados: IUser): serviceResponse
 }

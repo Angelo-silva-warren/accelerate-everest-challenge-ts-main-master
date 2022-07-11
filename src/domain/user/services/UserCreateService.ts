@@ -20,7 +20,7 @@ class UserService implements IUserCreate {
     this.userRepository = userRepository
   }
 
-  UserCreate (dados: IUser) {
+  userCreate (dados: IUser) {
     try {
       this.util.cpfCheck(dados.cpf)
       this.userHelper.emailCheck(dados.email, this.userRepository.database)

@@ -12,7 +12,7 @@ export default class UserRepository {
     this.database.push(entity)
   }
 
-  readall () {
+  readAll () {
     return this.database
   }
 }
