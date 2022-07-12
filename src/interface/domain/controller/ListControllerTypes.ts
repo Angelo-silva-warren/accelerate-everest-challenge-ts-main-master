@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { IUserlist } from '../services/UserListTypes'
+import IUserlist from '../services/UserListTypes'
 
 export default interface IListcontroller {
   userList : IUserlist
