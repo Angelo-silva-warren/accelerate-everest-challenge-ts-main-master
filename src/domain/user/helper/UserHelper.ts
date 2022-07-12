@@ -1,4 +1,4 @@
-import { IHelper } from '../../../interface/domain/helper/HelperTypes'
+import IHelper from '../../../interface/domain/helper/HelperTypes'
 import IUser from '../../../interface/UserTypes'
 
 export default class UserHelper implements IHelper {
