@@ -1,5 +1,5 @@
 import { injectable } from 'tsyringe'
-import { IUserRepository } from '../../../interface/domain/Repository/RepositoryTypes'
+import IUserRepository from '../../../interface/domain/Repository/RepositoryTypes'
 import IUser from '../../../interface/UserTypes'
 
 @injectable()
@@ -9,8 +9,9 @@ export default class UserRepository implements IUserRepository {
     this.database = []
   }
 
-  create (entity : IUser) : void {
+  create (entity : IUser) : IUser {
     this.database.push(entity)
+    return entity
   }
 
   readAll () {
