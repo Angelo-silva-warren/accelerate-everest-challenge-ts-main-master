@@ -1,4 +1,4 @@
-import { IUtil } from '../interface/util/UtilTypes'
+import IUtil from '../interface/util/UtilTypes'
 
 export default class util implements IUtil {
   cpfCheck (dados: string): void {

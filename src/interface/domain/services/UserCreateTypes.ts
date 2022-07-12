@@ -1,12 +1,12 @@
 import IUser from '../../UserTypes'
-import { IUtil } from '../../util/UtilTypes'
-import { IHelper } from '../helper/HelperTypes'
+import IUtil from '../../util/UtilTypes'
+import IHelper from '../helper/HelperTypes'
 
 interface serviceResponse{
   code: number;
   msg?: string;
 }
-export interface IUserCreate {
+export default interface IUserCreate {
   util : IUtil
   userHelper : IHelper
 

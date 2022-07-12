@@ -1,4 +1,4 @@
-import { IUserCreate } from '../services/UserCreateTypes'
+import IUserCreate from '../services/UserCreateTypes'
 import { Request, Response } from 'express'
 
 export default interface IUsercontroller {

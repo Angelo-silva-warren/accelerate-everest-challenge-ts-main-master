@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe'
-import { IHelper } from '../../../interface/domain/helper/HelperTypes'
-import { IUserRepository } from '../../../interface/domain/Repository/RepositoryTypes'
-import { IUserlist } from '../../../interface/domain/services/UserListTypes'
+import IHelper from '../../../interface/domain/helper/HelperTypes'
+import IUserRepository from '../../../interface/domain/Repository/RepositoryTypes'
+import IUserlist from '../../../interface/domain/services/UserListTypes'
 import IUser from '../../../interface/UserTypes'
 
 @injectable()
