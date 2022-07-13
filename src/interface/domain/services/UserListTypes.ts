@@ -3,5 +3,5 @@ import IHelper from '../helper/HelperTypes'
 
 export default interface IUserlist {
   userHelper : IHelper
-  listUsers (): IUser[]
+  listAll (): IUser[]
 }
