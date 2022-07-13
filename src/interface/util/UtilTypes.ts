@@ -1,3 +1,3 @@
 export default interface IUtil{
-  cpfCheck(dados: string): void
+  cpfCheck(cpf: string): void
 }

@@ -1,8 +1,8 @@
 import IUtil from '../interface/util/UtilTypes'
 
 export default class util implements IUtil {
-  cpfCheck (dados: string): void {
-    const cpfClean: string = dados.replace(/\.|-/g, '')
+  cpfCheck (cpf: string): void {
+    const cpfClean: string = cpf.replace(/\.|-/g, '')
 
     const test = cpfClean[0]
     for (let i = 1; i < cpfClean.length; i++) {

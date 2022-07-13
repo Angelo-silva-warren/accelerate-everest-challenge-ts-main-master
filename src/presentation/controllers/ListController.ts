@@ -13,7 +13,7 @@ export default class ListController implements IListcontroller {
   }
 
   list = async (req: Request, res: Response) : Promise<void> => {
-    const createList = await this.userList.createList()
-    res.json(createList)
+    const listUsers = await this.userList.listUsers()
+    res.json(listUsers)
   }
 }
