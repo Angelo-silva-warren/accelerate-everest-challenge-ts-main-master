@@ -11,8 +11,8 @@ export default class ListController implements IListcontroller {
     this.userList = userList;
   }
 
-  list = async (req: Request, res: Response): Promise<void> => {
-    const listUsers = await this.userList.listAll();
+  list = (req: Request, res: Response): void => {
+    const listUsers = this.userList.listAll();
     res.json(listUsers);
   };
 }

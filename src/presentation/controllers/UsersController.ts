@@ -10,10 +10,10 @@ export default class UserController implements IUsercontroller {
     this.userService = userService;
   }
 
-  handle = async (req: Request, res: Response): Promise<void> => {
+  handle = (req: Request, res: Response): void => {
     const { body } = req;
 
-    const createUser = await this.userService.userCreate(body);
+    const createUser = this.userService.userCreate(body);
     res.status(createUser.code).json(createUser.msg);
   };
 }
