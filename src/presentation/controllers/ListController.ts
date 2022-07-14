@@ -1,19 +1,18 @@
-import { Request, Response } from 'express'
-import { inject, injectable } from 'tsyringe'
-import IListcontroller from '../../interface/domain/controller/ListControllerTypes'
-import IUserlist from '../../interface/domain/services/UserListTypes'
+import { Request, Response } from 'express';
+import { inject, injectable } from 'tsyringe';
+import IListcontroller from '../../interface/domain/controller/ListControllerTypes';
+import IUserlist from '../../interface/domain/services/UserListTypes';
 
 @injectable()
 export default class ListController implements IListcontroller {
-  userList : IUserlist
+  userList: IUserlist;
 
-  constructor (
-    @inject('UserList')userList : IUserlist) {
-    this.userList = userList
+  constructor(@inject('UserList') userList: IUserlist) {
+    this.userList = userList;
   }
 
-  list = async (req: Request, res: Response) : Promise<void> => {
-    const listUsers = await this.userList.listAll()
-    res.json(listUsers)
-  }
+  list = async (req: Request, res: Response): Promise<void> => {
+    const listUsers = await this.userList.listAll();
+    res.json(listUsers);
+  };
 }

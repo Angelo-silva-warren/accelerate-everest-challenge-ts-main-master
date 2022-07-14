@@ -1,8 +1,5 @@
-import { Request, Response } from 'express'
-import IUserlist from '../services/UserListTypes'
+import { Request, Response } from 'express';
 
 export default interface IListcontroller {
-  userList : IUserlist
-
-  list: (req: Request, res: Response) => Promise<void>
+  list: (req: Request, res: Response) => Promise<void>;
 }

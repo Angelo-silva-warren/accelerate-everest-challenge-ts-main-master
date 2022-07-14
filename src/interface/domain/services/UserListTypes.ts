@@ -1,7 +1,5 @@
-import IUser from '../../UserTypes'
-import IHelper from '../helper/HelperTypes'
+import IUser from '../../UserTypes';
 
 export default interface IUserlist {
-  userHelper : IHelper
-  listAll (): IUser[]
+  listAll(): IUser[];
 }
