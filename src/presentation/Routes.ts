@@ -3,9 +3,10 @@ import UserValidation from '../middleware/UserValidation';
 import UserController from './controllers/UsersController';
 import ListController from './controllers/ListController';
 import { inject, injectable } from 'tsyringe';
+import IRoutes from '../interface/RoutesTypes';
 
 @injectable()
-export default class UserRouter {
+export default class UserRouter implements IRoutes {
   router = Router();
   CreateUserController: UserController;
   ListUserController: ListController;
