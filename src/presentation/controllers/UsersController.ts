@@ -13,11 +13,10 @@ export default class UserController implements IUsercontroller {
   handle = (req: Request, res: Response, next: NextFunction): void => {
     try {
       const { body } = req;
-
-      const createUser = this.userService.userCreate(body);
-      res.status(createUser.code).json(createUser.msg);
-    } catch (err) {
-      next(err);
+      this.userService.userCreate(body);
+      res.status(201).json('Usuário Criado');
+    } catch (error) {
+      next(error);
     }
   };
 }

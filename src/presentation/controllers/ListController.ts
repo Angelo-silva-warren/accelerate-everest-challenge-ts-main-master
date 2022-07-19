@@ -15,8 +15,8 @@ export default class ListController implements IListcontroller {
     try {
       const listUsers = this.userList.listAll();
       res.json(listUsers);
-    } catch (err) {
-      next(err);
+    } catch (error) {
+      next(error);
     }
   };
 }
