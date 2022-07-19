@@ -13,6 +13,8 @@ import IUsercontroller from '../interface/domain/controller/UserControllerTypes'
 import IListcontroller from '../interface/domain/controller/ListControllerTypes';
 import IUserRepository from '../interface/domain/Repository/RepositoryTypes';
 import UserRepository from '../domain/user/Repository/UserRepository';
+import IUserValidation from '../interface/domain/helper/UserValidationTypes';
+import Validation from '../domain/user/helper/UserValidation';
 
 // Router
 container.registerSingleton<IListcontroller>('ListController', ListController);
@@ -25,5 +27,6 @@ container.registerSingleton<IUserlist>('UserList', UserList);
 container.registerSingleton<IHelper>('UserHelper', UserHelper);
 // UserCreatService
 container.registerSingleton<IUtil>('Util', util);
+container.registerSingleton<IUserValidation>('UserValidation', Validation);
 // UserRepository
 container.registerSingleton<IUserRepository>('UserRepository', UserRepository);
