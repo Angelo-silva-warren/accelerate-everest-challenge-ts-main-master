@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { inject, injectable } from 'tsyringe';
 import IListcontroller from '../../interface/domain/controller/ListControllerTypes';
 import IUserlist from '../../interface/domain/services/UserListTypes';
@@ -11,8 +11,12 @@ export default class ListController implements IListcontroller {
     this.userList = userList;
   }
 
-  list = (req: Request, res: Response): void => {
-    const listUsers = this.userList.listAll();
-    res.json(listUsers);
+  list = (req: Request, res: Response, next: NextFunction): void => {
+    try {
+      const listUsers = this.userList.listAll();
+      res.json(listUsers);
+    } catch (err) {
+      next(err);
+    }
   };
 }

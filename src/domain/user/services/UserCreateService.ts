@@ -25,16 +25,10 @@ export default class UserService implements IUserCreate {
     code: number;
     msg: string;
   } {
-    try {
-      this.util.cpfCheck(newUser.cpf);
-      this.userHelper.emailCheck(newUser.email, this.userRepository.database);
+    this.util.cpfCheck(newUser.cpf);
+    this.userHelper.emailCheck(newUser.email, this.userRepository.database);
 
-      this.userRepository.create(newUser);
-      return { code: 201, msg: 'usuario criado' };
-    } catch (error) {
-      let message = 'Unkown Error';
-      if (error instanceof Error) message = error.message;
-      return { code: 422, msg: message };
-    }
+    this.userRepository.create(newUser);
+    return { code: 201, msg: 'usuario criado' };
   }
 }

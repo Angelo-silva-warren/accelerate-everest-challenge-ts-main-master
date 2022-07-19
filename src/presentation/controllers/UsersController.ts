@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import { inject, injectable } from 'tsyringe';
 import IUsercontroller from '../../interface/domain/controller/UserControllerTypes';
 import IUserCreate from '../../interface/domain/services/UserCreateTypes';
@@ -10,10 +10,14 @@ export default class UserController implements IUsercontroller {
     this.userService = userService;
   }
 
-  handle = (req: Request, res: Response): void => {
-    const { body } = req;
+  handle = (req: Request, res: Response, next: NextFunction): void => {
+    try {
+      const { body } = req;
 
-    const createUser = this.userService.userCreate(body);
-    res.status(createUser.code).json(createUser.msg);
+      const createUser = this.userService.userCreate(body);
+      res.status(createUser.code).json(createUser.msg);
+    } catch (err) {
+      next(err);
+    }
   };
 }
