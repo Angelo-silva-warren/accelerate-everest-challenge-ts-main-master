@@ -1,4 +1,5 @@
 import IUtil from '../interface/util/UtilTypes';
+import StatusError from './StatusError';
 
 export default class util implements IUtil {
   cpfCheck(cpf: string): void {
@@ -9,7 +10,7 @@ export default class util implements IUtil {
       if (cpfClean[i] !== test) {
         break;
       } else if (i === cpfClean.length - 1) {
-        throw new Error('CPF invalido');
+        throw new StatusError(422, 'CPF Invalido');
       }
     }
 
@@ -38,8 +39,10 @@ export default class util implements IUtil {
     }
 
     const firstDigit = calcDigit();
-    if (firstDigit !== confirmationDigits[0]) throw new Error('CPF invalido');
+    if (firstDigit !== confirmationDigits[0])
+      throw new StatusError(422, 'CPF Invalido');
     cpfArray.push(firstDigit);
-    if (calcDigit(0) !== confirmationDigits[1]) throw new Error('CPF invalido');
+    if (calcDigit(0) !== confirmationDigits[1])
+      throw new StatusError(422, 'CPF Invalido');
   }
 }
