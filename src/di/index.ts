@@ -9,18 +9,17 @@ import IUtil from '../interface/util/UtilTypes';
 import IHelper from '../interface/domain/helper/HelperTypes';
 import IUserlist from '../interface/domain/services/UserListTypes';
 import IUserCreate from '../interface/domain/services/UserCreateTypes';
-import IUsercontroller from '../interface/domain/controller/UserControllerTypes';
-import IListcontroller from '../interface/domain/controller/ListControllerTypes';
 import IUserRepository from '../interface/domain/Repository/RepositoryTypes';
 import UserRepository from '../domain/user/Repository/UserRepository';
 import IUserValidation from '../interface/domain/helper/UserValidationTypes';
 import Validation from '../domain/user/helper/UserValidation';
 import { MiddlewareType } from '../interface/middleware/MiddlewareTypes';
 import UserValidation from '../middleware/UserValidation';
+import IController from '../interface/domain/controller/IController';
 
 // Router
-container.registerSingleton<IListcontroller>('ListController', ListController);
-container.registerSingleton<IUsercontroller>('UserController', UserController);
+container.registerSingleton<IController>('ListController', ListController);
+container.registerSingleton<IController>('UserController', UserController);
 // UserController
 container.registerSingleton<IUserCreate>('UserService', UserService);
 //middleware
