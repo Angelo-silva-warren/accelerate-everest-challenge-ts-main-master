@@ -1,5 +1,5 @@
 import IUser from '../../UserTypes';
 
 export default interface IHelper {
-  emailCheck(email: string, Mock: IUser[]): void;
+  checkIfEquals(field: string, fieldName: keyof IUser, database: IUser[]): void;
 }

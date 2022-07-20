@@ -3,12 +3,16 @@ import IUser from '../../../interface/UserTypes';
 import StatusError from '../../../util/StatusError';
 
 export default class UserHelper implements IHelper {
-  emailCheck(email: string, Mock: IUser[]): void {
-    const emailMock: IUser[] = Object.values(Mock);
-    const emailData = emailMock.map((user: IUser) => user.email);
-
-    if (emailData.includes(email)) {
-      throw new StatusError(422, 'Email Invalido');
-    }
+  checkIfEquals(
+    field: string,
+    fieldName: keyof IUser,
+    database: IUser[],
+  ): void {
+    const userArray: IUser[] = Object.values(database);
+    userArray.map((user: IUser) => {
+      if (user[fieldName] === field) {
+        throw new StatusError(422, `${fieldName} ${field} já existe`);
+      }
+    });
   }
 }

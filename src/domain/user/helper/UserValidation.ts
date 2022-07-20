@@ -17,8 +17,9 @@ export default class Validation implements IUserValidation {
     this.userHelper = userHelper;
   }
 
-  validate(cpf: string, email: string, mock: IUser[]): void {
-    this.userHelper.emailCheck(email, mock);
+  validate(cpf: string, email: string, database: IUser[]): void {
+    this.userHelper.checkIfEquals(email, 'email', database);
+    this.userHelper.checkIfEquals(cpf, 'cpf', database);
     this.util.cpfCheck(cpf);
   }
 }
