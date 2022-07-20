@@ -1,3 +1,3 @@
 export default interface IRoutes {
-  routes(): Promise<void>;
+  routes(): void;
 }

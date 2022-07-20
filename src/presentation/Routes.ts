@@ -20,7 +20,7 @@ export default class UserRouter implements IRoutes {
     this.routes();
   }
 
-  async routes(): Promise<void> {
+  routes(): void {
     this.router.post(
       '/customer',
       UserValidation,
