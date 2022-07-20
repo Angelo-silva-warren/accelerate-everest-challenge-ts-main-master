@@ -15,12 +15,18 @@ import IUserRepository from '../interface/domain/Repository/RepositoryTypes';
 import UserRepository from '../domain/user/Repository/UserRepository';
 import IUserValidation from '../interface/domain/helper/UserValidationTypes';
 import Validation from '../domain/user/helper/UserValidation';
+import { MiddlewareType } from '../interface/middleware/MiddlewareTypes';
+import UserValidation from '../middleware/UserValidation';
 
 // Router
 container.registerSingleton<IListcontroller>('ListController', ListController);
 container.registerSingleton<IUsercontroller>('UserController', UserController);
-// UserControoler
+// UserController
 container.registerSingleton<IUserCreate>('UserService', UserService);
+//middleware
+container.register<MiddlewareType>('ValidationMiddleware', {
+  useValue: UserValidation,
+});
 // ListController
 container.registerSingleton<IUserlist>('UserList', UserList);
 // UserListService
