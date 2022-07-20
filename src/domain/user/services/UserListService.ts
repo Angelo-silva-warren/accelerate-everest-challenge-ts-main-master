@@ -17,7 +17,6 @@ export default class UserList implements IUserlist {
   }
 
   listAll(): IUser[] {
-    const list = this.userRepository.readAll();
-    return list;
+    return this.userRepository.readAll();
   }
 }
