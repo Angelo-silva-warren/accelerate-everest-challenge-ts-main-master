@@ -23,9 +23,6 @@ export default class UserService implements IUserCreate {
       newUser.email,
       this.userRepository.database,
     );
-    // this.util.cpfCheck(newUser.cpf);
-    // this.userHelper.emailCheck(newUser.email, this.userRepository.database);
-
     this.userRepository.create(newUser);
   }
 }
