@@ -30,6 +30,6 @@ export default class UserRouter implements IRoutes {
       this.CreateUserController.handle,
     );
 
-    this.router.get('/user', this.ListUserController.list);
+    this.router.get('/user', this.ListUserController.handle);
   }
 }
