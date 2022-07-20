@@ -16,6 +16,8 @@ import Validation from '../domain/user/helper/UserValidation';
 import { MiddlewareType } from '../interface/middleware/MiddlewareTypes';
 import UserValidation from '../middleware/UserValidation';
 import IController from '../interface/domain/controller/IController';
+import { ControllerAdapterType } from '../interface/middleware/IControllerAdapter';
+import controllerAdapter from '../middleware/global/ControllerAdapter';
 
 // Router
 container.registerSingleton<IController>('ListController', ListController);
@@ -25,6 +27,9 @@ container.registerSingleton<IUserCreate>('UserService', UserService);
 //middleware
 container.register<MiddlewareType>('ValidationMiddleware', {
   useValue: UserValidation,
+});
+container.register<ControllerAdapterType>('ControllerAdapter', {
+  useValue: controllerAdapter,
 });
 // ListController
 container.registerSingleton<IUserlist>('UserList', UserList);
