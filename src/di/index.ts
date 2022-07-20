@@ -27,6 +27,6 @@ container.registerSingleton<IUserlist>('UserList', UserList);
 container.registerSingleton<IHelper>('UserHelper', UserHelper);
 // UserCreatService
 container.registerSingleton<IUtil>('Util', util);
-container.registerSingleton<IUserValidation>('UserValidation', Validation);
+container.registerSingleton<IUserValidation>('Validation', Validation);
 // UserRepository
 container.registerSingleton<IUserRepository>('UserRepository', UserRepository);

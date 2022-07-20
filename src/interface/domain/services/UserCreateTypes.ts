@@ -5,5 +5,5 @@ interface serviceResponse {
   msg?: string;
 }
 export default interface IUserCreate {
-  userCreate(newUser: IUser): serviceResponse;
+  userCreate(newUser: IUser): void;
 }

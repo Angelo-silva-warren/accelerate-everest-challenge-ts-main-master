@@ -17,7 +17,7 @@ export default class Validation implements IUserValidation {
     this.userHelper = userHelper;
   }
 
-  async validate(cpf: string, email: string, mock: IUser[]): Promise<void> {
+  validate(cpf: string, email: string, mock: IUser[]): void {
     this.userHelper.emailCheck(email, mock);
     this.util.cpfCheck(cpf);
   }

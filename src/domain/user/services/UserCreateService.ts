@@ -1,34 +1,31 @@
 import { inject, injectable } from 'tsyringe';
 import IUserCreate from '../../../interface/domain/services/UserCreateTypes';
-import IUtil from '../../../interface/util/UtilTypes';
-import IHelper from '../../../interface/domain/helper/HelperTypes';
 import IUser from '../../../interface/UserTypes';
 import IUserRepository from '../../../interface/domain/Repository/RepositoryTypes';
+import IUserValidation from '../../../interface/domain/helper/UserValidationTypes';
 
 @injectable()
 export default class UserService implements IUserCreate {
-  util: IUtil;
-  userHelper: IHelper;
   userRepository: IUserRepository;
+  validation: IUserValidation;
 
   constructor(
-    @inject('Util') util: IUtil,
-    @inject('UserHelper') userHelper: IHelper,
     @inject('UserRepository') userRepository: IUserRepository,
+    @inject('Validation') validation: IUserValidation,
   ) {
-    this.util = util;
-    this.userHelper = userHelper;
     this.userRepository = userRepository;
+    this.validation = validation;
   }
 
-  userCreate(newUser: IUser): {
-    code: number;
-    msg: string;
-  } {
-    this.util.cpfCheck(newUser.cpf);
-    this.userHelper.emailCheck(newUser.email, this.userRepository.database);
+  userCreate(newUser: IUser): void {
+    this.validation.validate(
+      newUser.cpf,
+      newUser.email,
+      this.userRepository.database,
+    );
+    // this.util.cpfCheck(newUser.cpf);
+    // this.userHelper.emailCheck(newUser.email, this.userRepository.database);
 
     this.userRepository.create(newUser);
-    return { code: 201, msg: 'usuario criado' };
   }
 }
