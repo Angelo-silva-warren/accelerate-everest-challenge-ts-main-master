@@ -1,10 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
 import { inject, injectable } from 'tsyringe';
-import IUsercontroller from '../../interface/domain/controller/UserControllerTypes';
+import IController from '../../interface/domain/controller/IController';
 import IUserCreate from '../../interface/domain/services/UserCreateTypes';
 
 @injectable()
-export default class UserController implements IUsercontroller {
+export default class UserController implements IController {
   userService: IUserCreate;
   constructor(@inject('UserService') userService: IUserCreate) {
     this.userService = userService;
