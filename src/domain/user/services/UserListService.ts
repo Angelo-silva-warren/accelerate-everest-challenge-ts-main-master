@@ -1,11 +1,22 @@
-import UserHelper from '../helper/UserHelper'
-import Iuser from '../types/UserTypes'
+import { inject, injectable } from 'tsyringe';
+import IHelper from '../../../interface/domain/helper/HelperTypes';
+import IUserRepository from '../../../interface/domain/Repository/RepositoryTypes';
+import IUserlist from '../../../interface/domain/services/UserListTypes';
+import IUser from '../../../interface/UserTypes';
 
-class UserList {
-  static CreateList (Mock: Iuser[]) {
-    const lista = UserHelper.list(Mock)
-    return lista
+@injectable()
+export default class UserList implements IUserlist {
+  userHelper: IHelper;
+  userRepository: IUserRepository;
+  constructor(
+    @inject('UserHelper') userHelper: IHelper,
+    @inject('UserRepository') userRepository: IUserRepository,
+  ) {
+    this.userHelper = userHelper;
+    this.userRepository = userRepository;
+  }
+
+  listAll(): IUser[] {
+    return this.userRepository.readAll();
   }
 }
-
-export default UserList

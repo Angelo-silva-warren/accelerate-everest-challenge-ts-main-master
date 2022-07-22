@@ -1,22 +1,22 @@
-import { Request, Response } from 'express'
-import UserService from '../../domain/user/services/UserCreateService'
-import UserList from '../../domain/user/services/UserListService'
-import Mock from '../../domain/user/mocks/UserMock'
+import { Request, Response, NextFunction } from 'express';
+import { inject, injectable } from 'tsyringe';
+import IController from '../../interface/domain/controller/IController';
+import IUserCreate from '../../interface/domain/services/UserCreateTypes';
 
-class UserController {
-  static async create (req: Request, res: Response) {
-    const dados = req.body
-
-    const createUser =  await UserService.UserCreate(dados)
-
-    res.status(createUser.code).json(createUser.msg)
+@injectable()
+export default class UserController implements IController {
+  userService: IUserCreate;
+  constructor(@inject('UserService') userService: IUserCreate) {
+    this.userService = userService;
   }
 
-  static list (req: Request, res: Response) {
-    const createList = UserList.CreateList(Mock)
-    console.log(createList)
-    res.json(createList)
+  handle(req: Request, res: Response, next: NextFunction): void {
+    try {
+      const { body } = req;
+      this.userService.userCreate(body);
+      res.status(201).json('Usuário Criado');
+    } catch (error) {
+      next(error);
+    }
   }
 }
-
-export default UserController

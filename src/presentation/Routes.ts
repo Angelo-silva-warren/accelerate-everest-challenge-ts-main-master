@@ -1,11 +1,38 @@
-import { Router } from 'express'
-import UserValidation from '../middleware/UserValidation'
-import UserController from './controllers/UsersController'
+import { Router } from 'express';
+import UserController from './controllers/UsersController';
+import ListController from './controllers/ListController';
+import { inject, injectable } from 'tsyringe';
+import IRoutes from '../interface/RoutesTypes';
+import { MiddlewareType } from '../interface/middleware/MiddlewareTypes';
+import { ControllerAdapterType } from '../interface/middleware/IControllerAdapter';
+@injectable()
+export default class UserRouter implements IRoutes {
+  router = Router();
+  CreateUserController: UserController;
+  ListUserController: ListController;
+  UserValidation: MiddlewareType;
+  controllerAdapter: ControllerAdapterType;
 
-const router = Router()
+  constructor(
+    @inject('UserController') userController: UserController,
+    @inject('ListController') userList: ListController,
+    @inject('ValidationMiddleware') userValidation: MiddlewareType,
+    @inject('ControllerAdapter') controllerAdapter: ControllerAdapterType,
+  ) {
+    this.UserValidation = userValidation;
+    this.controllerAdapter = controllerAdapter;
+    this.CreateUserController = userController;
+    this.ListUserController = userList;
+    this.routes();
+  }
 
-router.post('/customer', UserValidation , UserController.create)
+  routes(): void {
+    this.router.post(
+      '/customer',
+      this.UserValidation,
+      this.controllerAdapter(this.CreateUserController),
+    );
 
-router.get('/user', UserController.list)
-
-export { router }
+    this.router.get('/user', this.controllerAdapter(this.ListUserController));
+  }
+}

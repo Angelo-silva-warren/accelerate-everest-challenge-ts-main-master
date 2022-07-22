@@ -1,17 +1,28 @@
-import Mock from '../mocks/UserMock';
-import Iuser from '../types/UserTypes';
-import UserSchema from '../helper/JoiHelper';
+import { inject, injectable } from 'tsyringe';
+import IUserCreate from '../../../interface/domain/services/UserCreateTypes';
+import IUser from '../../../interface/UserTypes';
+import IUserRepository from '../../../interface/domain/Repository/RepositoryTypes';
+import IUserValidation from '../../../interface/domain/helper/UserValidationTypes';
 
-class UserService {
-  static async UserCreate(dados: Iuser) {
-    try {
-      const newUser = await UserSchema.validateAsync(dados);
-      Mock.push(newUser);
-      return { code: 201, msg: { message: 'usuario criado' } };
-    } catch (error) {
-      return { code: 422, msg: error };
-    }
+@injectable()
+export default class UserService implements IUserCreate {
+  userRepository: IUserRepository;
+  validation: IUserValidation;
+
+  constructor(
+    @inject('UserRepository') userRepository: IUserRepository,
+    @inject('Validation') validation: IUserValidation,
+  ) {
+    this.userRepository = userRepository;
+    this.validation = validation;
+  }
+
+  userCreate(newUser: IUser): void {
+    this.validation.validate(
+      newUser.cpf,
+      newUser.email,
+      this.userRepository.database,
+    );
+    this.userRepository.create(newUser);
   }
 }
-
-export default UserService;

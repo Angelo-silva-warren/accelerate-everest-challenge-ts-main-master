@@ -1,13 +1,16 @@
-class util {
-  static cpfCheck(dados: string) {
-    const cpfClean: string = dados.replace(/\.|-/g, '');
+import IUtil from '../interface/util/UtilTypes';
+import StatusError from './StatusError';
+
+export default class util implements IUtil {
+  cpfCheck(cpf: string): void {
+    const cpfClean: string = cpf.replace(/\.|-/g, '');
 
     const test = cpfClean[0];
     for (let i = 1; i < cpfClean.length; i++) {
       if (cpfClean[i] !== test) {
         break;
       } else if (i === cpfClean.length - 1) {
-        return false;
+        throw new StatusError(422, 'CPF Invalido');
       }
     }
 
@@ -36,12 +39,10 @@ class util {
     }
 
     const firstDigit = calcDigit();
-    if (firstDigit !== confirmationDigits[0]) return false;
+    if (firstDigit !== confirmationDigits[0])
+      throw new StatusError(422, 'CPF Invalido');
     cpfArray.push(firstDigit);
-    if (calcDigit(0) !== confirmationDigits[1]) return false;
-
-    return true;
+    if (calcDigit(0) !== confirmationDigits[1])
+      throw new StatusError(422, 'CPF Invalido');
   }
 }
-
-export default util;

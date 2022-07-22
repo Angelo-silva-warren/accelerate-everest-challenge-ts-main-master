@@ -1,37 +1,18 @@
-import Iuser from '../types/UserTypes';
+import IHelper from '../../../interface/domain/helper/HelperTypes';
+import IUser from '../../../interface/UserTypes';
+import StatusError from '../../../util/StatusError';
 
-class UserHelper {
-  static emailCheck(dados: string, Mock: Iuser[]) {
-    const emailMock: Iuser[] = Object.values(Mock);
-    const lista = emailMock.map((item) => item.email);
-    let result: boolean = true;
-
-    lista.forEach((lista) => {
-      if (lista !== dados) {
-        result = true;
-      } else {
-        result = false;
-        return;
+export default class UserHelper implements IHelper {
+  checkIfEquals(
+    field: string,
+    fieldName: keyof IUser,
+    database: IUser[],
+  ): void {
+    const userArray: IUser[] = Object.values(database);
+    userArray.map((user: IUser) => {
+      if (user[fieldName] === field) {
+        throw new StatusError(422, `${fieldName} ${field} já existe`);
       }
     });
-    return result;
-  }
-
-  static list(mock: Iuser[]) {
-    const mocks: Iuser[] = Object.values(mock);
-    const listaEmail = mocks.map((item) => item.email);
-    const listaName = mocks.map((item) => item.full_name);
-    const listArray: object[] = [];
-
-    for (let i = 0; i < mocks.length; i++) {
-      const objeto: object = {
-        name: listaName[i],
-        email: listaEmail[i],
-      };
-      listArray.push(objeto);
-    }
-    return listArray;
   }
 }
-
-export default UserHelper;
