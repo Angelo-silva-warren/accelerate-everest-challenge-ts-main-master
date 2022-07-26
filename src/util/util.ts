@@ -2,7 +2,7 @@ import IUtil from '@interface/util/UtilTypes';
 import StatusError from './StatusError';
 
 export default class util implements IUtil {
-  cpfCheck(cpf: string): void {
+  public cpfCheck(cpf: string): void {
     const cpfClean: string = cpf.replace(/\.|-/g, '');
 
     const test = cpfClean[0];

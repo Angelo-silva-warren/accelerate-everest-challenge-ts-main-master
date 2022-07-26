@@ -11,7 +11,7 @@ export default class ListController implements IController {
     this.userList = userList;
   }
 
-  handle(req: Request, res: Response, next: NextFunction): void {
+  public handle(req: Request, res: Response, next: NextFunction): void {
     try {
       const listUsers = this.userList.listAll();
       res.json(listUsers);

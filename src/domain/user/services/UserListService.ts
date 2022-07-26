@@ -16,7 +16,7 @@ export default class UserList implements IUserlist {
     this.userRepository = userRepository;
   }
 
-  listAll(): IUser[] {
+  public listAll(): IUser[] {
     return this.userRepository.readAll();
   }
 }

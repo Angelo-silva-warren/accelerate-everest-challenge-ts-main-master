@@ -9,12 +9,12 @@ export default class UserRepository implements IUserRepository {
     this.database = [];
   }
 
-  create(entity: IUser): IUser {
+  public create(entity: IUser): IUser {
     this.database.push(entity);
     return entity;
   }
 
-  readAll() {
+  public readAll() {
     return this.database;
   }
 }

@@ -17,7 +17,7 @@ export default class UserService implements IUserCreate {
     this.validation = validation;
   }
 
-  userCreate(newUser: IUser): void {
+  public userCreate(newUser: IUser): void {
     this.validation.validate(
       newUser.cpf,
       newUser.email,
