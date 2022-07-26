@@ -11,10 +11,14 @@ export default class ListController implements IController {
     this.userList = userList;
   }
 
-  public handle(req: Request, res: Response, next: NextFunction): void {
+  public handle(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Response | void {
     try {
       const listUsers = this.userList.listAll();
-      res.json(listUsers);
+      return res.json(listUsers);
     } catch (error) {
       next(error);
     }

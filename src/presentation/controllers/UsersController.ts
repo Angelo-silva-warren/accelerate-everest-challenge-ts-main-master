@@ -10,7 +10,11 @@ export default class UserController implements IController {
     this.userService = userService;
   }
 
-  public handle(req: Request, res: Response, next: NextFunction): void {
+  public handle(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Response | void {
     try {
       const { body } = req;
       this.userService.userCreate(body);
