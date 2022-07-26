@@ -17,12 +17,13 @@ export default class UserService implements IUserCreate {
     this.validation = validation;
   }
 
-  public userCreate(newUser: IUser): void {
+  public userCreate(body: IUser): IUser {
     this.validation.validate(
-      newUser.cpf,
-      newUser.email,
+      body.cpf,
+      body.email,
       this.userRepository.database,
     );
-    this.userRepository.create(newUser);
+    const newUser = this.userRepository.create(body);
+    return newUser;
   }
 }
