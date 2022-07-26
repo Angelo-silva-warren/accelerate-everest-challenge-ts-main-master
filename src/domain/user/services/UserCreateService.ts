@@ -1,8 +1,8 @@
+import IUserValidation from '@interface/domain/helper/UserValidationTypes';
+import IUserRepository from '@interface/domain/Repository/RepositoryTypes';
+import IUserCreate from '@interface/domain/services/UserCreateTypes';
+import IUser from '@interface/UserTypes';
 import { inject, injectable } from 'tsyringe';
-import IUserCreate from '../../../interface/domain/services/UserCreateTypes';
-import IUser from '../../../interface/UserTypes';
-import IUserRepository from '../../../interface/domain/Repository/RepositoryTypes';
-import IUserValidation from '../../../interface/domain/helper/UserValidationTypes';
 
 @injectable()
 export default class UserService implements IUserCreate {

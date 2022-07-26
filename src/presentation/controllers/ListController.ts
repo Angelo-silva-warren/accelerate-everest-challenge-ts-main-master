@@ -1,7 +1,7 @@
+import IController from '@interface/domain/controller/IController';
+import IUserlist from '@interface/domain/services/UserListTypes';
 import { NextFunction, Request, Response } from 'express';
 import { inject, injectable } from 'tsyringe';
-import IController from '../../interface/domain/controller/IController';
-import IUserlist from '../../interface/domain/services/UserListTypes';
 
 @injectable()
 export default class ListController implements IController {

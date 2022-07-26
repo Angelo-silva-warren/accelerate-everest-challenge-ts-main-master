@@ -1,6 +1,6 @@
-import UserSchema from './UserSchema';
+import StatusError from '@util/StatusError';
 import { NextFunction, Request, Response } from 'express';
-import StatusError from '../../util/StatusError';
+import UserSchema from './UserSchema';
 
 export default async (req: Request, res: Response, next: NextFunction) => {
   try {

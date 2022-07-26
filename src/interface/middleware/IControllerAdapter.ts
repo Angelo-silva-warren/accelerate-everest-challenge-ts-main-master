@@ -1,5 +1,5 @@
+import IController from '@interface/domain/controller/IController';
 import { NextFunction, Request, Response } from 'express';
-import IController from '../domain/controller/IController';
 
 export type ControllerAdapterType = (
   controller: IController,

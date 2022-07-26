@@ -1,4 +1,4 @@
-import IUser from '../../UserTypes';
+import IUser from '@interface/UserTypes';
 
 interface serviceResponse {
   code: number;

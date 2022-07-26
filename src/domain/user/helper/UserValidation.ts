@@ -1,8 +1,8 @@
-import IUtil from '../../../interface/util/UtilTypes';
-import IHelper from '../../../interface/domain/helper/HelperTypes';
-import IUser from '../../../interface/UserTypes';
+import IHelper from '@interface/domain/helper/HelperTypes';
+import IUserValidation from '@interface/domain/helper/UserValidationTypes';
+import IUser from '@interface/UserTypes';
+import IUtil from '@interface/util/UtilTypes';
 import { inject, injectable } from 'tsyringe';
-import IUserValidation from '../../../interface/domain/helper/UserValidationTypes';
 
 @injectable()
 export default class Validation implements IUserValidation {

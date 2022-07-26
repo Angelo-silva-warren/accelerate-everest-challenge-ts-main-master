@@ -1,10 +1,10 @@
+import { ControllerAdapterType } from '@interface/middleware/IControllerAdapter';
+import { MiddlewareType } from '@interface/middleware/MiddlewareTypes';
+import IRoutes from '@interface/RoutesTypes';
 import { Router } from 'express';
-import UserController from './controllers/UsersController';
-import ListController from './controllers/ListController';
 import { inject, injectable } from 'tsyringe';
-import IRoutes from '../interface/RoutesTypes';
-import { MiddlewareType } from '../interface/middleware/MiddlewareTypes';
-import { ControllerAdapterType } from '../interface/middleware/IControllerAdapter';
+import ListController from './controllers/ListController';
+import UserController from './controllers/UsersController';
 @injectable()
 export default class UserRouter implements IRoutes {
   router = Router();
