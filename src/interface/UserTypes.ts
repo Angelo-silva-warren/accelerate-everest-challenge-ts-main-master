@@ -8,7 +8,7 @@ export default interface IUser {
   email_sms?: boolean;
   whatsapp: boolean;
   country: string;
-  citt: string;
+  city: string;
   postal_code: string;
   address: string;
   number: number;
