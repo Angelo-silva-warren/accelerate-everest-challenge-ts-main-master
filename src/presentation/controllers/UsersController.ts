@@ -18,7 +18,7 @@ export default class UserController implements IController {
     try {
       const { body } = req;
       const newUser = this.userService.userCreate(body);
-      res.status(201).json(newUser);
+      return res.status(201).json(newUser);
     } catch (error) {
       next(error);
     }
