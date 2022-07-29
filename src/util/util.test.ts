@@ -14,10 +14,13 @@ describe('Util', () => {
       util_instance.cpfCheck('12345678909');
       expect(() => util_instance.cpfCheck('123.456.789.09')).not.toThrow();
     });
-    it('Should throw error when validating cpf 123.456.789.08 ', () => {
+    it('Should throw error when second digit of cpf 123.456.789.09 is wrong ', () => {
       expect(() => util_instance.cpfCheck('12345678908')).toThrow();
     });
-    it('Should throw error when to try clean string', () => {
+    it('Should throw error when first digit of cpf 123.456.789.09 is wrong ', () => {
+      expect(() => util_instance.cpfCheck('12345678919')).toThrow();
+    });
+    it('Should throw error when to every number is equal', () => {
       expect(() => util_instance.cpfCheck('11111111111')).toThrow();
     });
   });
