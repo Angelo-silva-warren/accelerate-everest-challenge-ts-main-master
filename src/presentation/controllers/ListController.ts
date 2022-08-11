@@ -1,5 +1,6 @@
 import IController from '@interface/domain/controller/IController';
 import IUserlist from '@interface/domain/services/UserListTypes';
+import StatusError from '@util/StatusError';
 import { NextFunction, Request, Response } from 'express';
 import { inject, injectable } from 'tsyringe';
 
@@ -20,7 +21,7 @@ export default class ListController implements IController {
       const listUsers = this.userList.listAll();
       return res.json(listUsers);
     } catch (error) {
-      next(error);
+      next(new StatusError(422, `${error}`));
     }
   }
 }

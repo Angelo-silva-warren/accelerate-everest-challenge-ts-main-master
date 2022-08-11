@@ -1,5 +1,6 @@
 import IController from '@interface/domain/controller/IController';
 import IUserCreate from '@interface/domain/services/UserCreateTypes';
+import StatusError from '@util/StatusError';
 import { Request, Response, NextFunction } from 'express';
 import { inject, injectable } from 'tsyringe';
 
@@ -20,7 +21,7 @@ export default class UserController implements IController {
       const newUser = this.userService.userCreate(body);
       return res.status(201).json(newUser);
     } catch (error) {
-      next(error);
+      next(new StatusError(422, `${error}`));
     }
   }
 }
