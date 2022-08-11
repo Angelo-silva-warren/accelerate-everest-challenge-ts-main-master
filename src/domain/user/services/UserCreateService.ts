@@ -23,7 +23,7 @@ export default class UserService implements IUserCreate {
       body.email,
       this.userRepository.database,
     );
-    const newUser = this.userRepository.create(body);
-    return newUser;
+
+    return this.userRepository.create(body);
   }
 }
