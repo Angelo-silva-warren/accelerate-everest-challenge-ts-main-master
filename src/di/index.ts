@@ -40,3 +40,5 @@ container.registerSingleton<IUtil>('Util', util);
 container.registerSingleton<IUserValidation>('Validation', Validation);
 // UserRepository
 container.registerSingleton<IUserRepository>('UserRepository', UserRepository);
+
+export default container;
