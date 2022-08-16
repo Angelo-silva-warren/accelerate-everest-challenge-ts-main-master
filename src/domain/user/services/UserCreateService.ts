@@ -6,16 +6,10 @@ import { inject, injectable } from 'tsyringe';
 
 @injectable()
 export default class UserService implements IUserCreate {
-  userRepository: IUserRepository;
-  validation: IUserValidation;
-
   constructor(
-    @inject('UserRepository') userRepository: IUserRepository,
-    @inject('Validation') validation: IUserValidation,
-  ) {
-    this.userRepository = userRepository;
-    this.validation = validation;
-  }
+    @inject('UserRepository') private userRepository: IUserRepository,
+    @inject('Validation') private validation: IUserValidation,
+  ) {}
 
   public userCreate(body: IUser): IUser {
     this.validation.validate(

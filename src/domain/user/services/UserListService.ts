@@ -5,10 +5,9 @@ import { inject, injectable } from 'tsyringe';
 
 @injectable()
 export default class UserList implements IUserlist {
-  userRepository: IUserRepository;
-  constructor(@inject('UserRepository') userRepository: IUserRepository) {
-    this.userRepository = userRepository;
-  }
+  constructor(
+    @inject('UserRepository') private userRepository: IUserRepository,
+  ) {}
 
   public listAll(): IUser[] {
     return this.userRepository.readAll();

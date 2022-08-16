@@ -8,31 +8,24 @@ import UserController from './controllers/UsersController';
 @injectable()
 export default class UserRouter implements IRoutes {
   router = Router();
-  CreateUserController: UserController;
-  ListUserController: ListController;
-  UserValidation: MiddlewareType;
-  controllerAdapter: ControllerAdapterType;
 
   constructor(
-    @inject('UserController') userController: UserController,
-    @inject('ListController') userList: ListController,
-    @inject('ValidationMiddleware') userValidation: MiddlewareType,
-    @inject('ControllerAdapter') controllerAdapter: ControllerAdapterType,
+    @inject('UserController') private userController: UserController,
+    @inject('ListController') private userList: ListController,
+    @inject('ValidationMiddleware') private userValidation: MiddlewareType,
+    @inject('ControllerAdapter')
+    private controllerAdapter: ControllerAdapterType,
   ) {
-    this.UserValidation = userValidation;
-    this.controllerAdapter = controllerAdapter;
-    this.CreateUserController = userController;
-    this.ListUserController = userList;
     this.routes();
   }
 
   routes(): void {
     this.router.post(
       '/customer',
-      this.UserValidation,
-      this.controllerAdapter(this.CreateUserController),
+      this.userValidation,
+      this.controllerAdapter(this.userList),
     );
 
-    this.router.get('/user', this.controllerAdapter(this.ListUserController));
+    this.router.get('/user', this.controllerAdapter(this.userController));
   }
 }

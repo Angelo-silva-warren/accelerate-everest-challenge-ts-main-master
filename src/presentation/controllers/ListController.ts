@@ -6,11 +6,7 @@ import { inject, injectable } from 'tsyringe';
 
 @injectable()
 export default class ListController implements IController {
-  userList: IUserlist;
-
-  constructor(@inject('UserList') userList: IUserlist) {
-    this.userList = userList;
-  }
+  constructor(@inject('UserList') private userList: IUserlist) {}
 
   public handle(
     req: Request,

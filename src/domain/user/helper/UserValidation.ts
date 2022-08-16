@@ -6,16 +6,10 @@ import { inject, injectable } from 'tsyringe';
 
 @injectable()
 export default class Validation implements IUserValidation {
-  userHelper: IHelper;
-  util: IUtil;
-
   constructor(
-    @inject('Util') util: IUtil,
-    @inject('UserHelper') userHelper: IHelper,
-  ) {
-    this.util = util;
-    this.userHelper = userHelper;
-  }
+    @inject('Util') private util: IUtil,
+    @inject('UserHelper') private userHelper: IHelper,
+  ) {}
 
   public validate(cpf: string, email: string, database: IUser[]): void {
     this.userHelper.checkIfEquals(email, 'email', database);

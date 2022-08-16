@@ -6,10 +6,7 @@ import { inject, injectable } from 'tsyringe';
 
 @injectable()
 export default class UserController implements IController {
-  userService: IUserCreate;
-  constructor(@inject('UserService') userService: IUserCreate) {
-    this.userService = userService;
-  }
+  constructor(@inject('UserService') private userService: IUserCreate) {}
 
   public handle(
     req: Request,
