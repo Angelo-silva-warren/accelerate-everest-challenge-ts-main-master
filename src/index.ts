@@ -1,10 +1,10 @@
 import 'reflect-metadata';
 import './di/index';
 import express from 'express';
-import UserRouter from './presentation/Routes';
 import { container } from 'tsyringe';
 import helmet from 'helmet';
-import errorMiddleware from './middleware/global/errorMiddleware';
+import errorMiddleware from '@middleware/global/errorMiddleware';
+import UserRouter from '@presentation/Routes';
 
 const app = express();
 const userRouter = container.resolve(UserRouter);

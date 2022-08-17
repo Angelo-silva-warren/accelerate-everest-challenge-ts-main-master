@@ -1,5 +1,5 @@
+import IStatusError from '@interface/domain/helper/IStatusError';
 import { NextFunction, Request, Response } from 'express';
-import IStatusError from '../../interface/domain/helper/IStatusError';
 
 export default async (
   err: IStatusError,

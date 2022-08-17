@@ -1,22 +1,15 @@
+import IUserRepository from '@interface/domain/Repository/RepositoryTypes';
+import IUserlist from '@interface/domain/services/UserListTypes';
+import IUser from '@interface/UserTypes';
 import { inject, injectable } from 'tsyringe';
-import IHelper from '../../../interface/domain/helper/HelperTypes';
-import IUserRepository from '../../../interface/domain/Repository/RepositoryTypes';
-import IUserlist from '../../../interface/domain/services/UserListTypes';
-import IUser from '../../../interface/UserTypes';
 
 @injectable()
 export default class UserList implements IUserlist {
-  userHelper: IHelper;
-  userRepository: IUserRepository;
   constructor(
-    @inject('UserHelper') userHelper: IHelper,
-    @inject('UserRepository') userRepository: IUserRepository,
-  ) {
-    this.userHelper = userHelper;
-    this.userRepository = userRepository;
-  }
+    @inject('UserRepository') private userRepository: IUserRepository,
+  ) {}
 
-  listAll(): IUser[] {
+  public listAll(): IUser[] {
     return this.userRepository.readAll();
   }
 }

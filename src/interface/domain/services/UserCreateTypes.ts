@@ -1,9 +1,5 @@
-import IUser from '../../UserTypes';
+import IUser from '@interface/UserTypes';
 
-interface serviceResponse {
-  code: number;
-  msg?: string;
-}
 export default interface IUserCreate {
-  userCreate(newUser: IUser): void;
+  userCreate(newUser: IUser): IUser;
 }

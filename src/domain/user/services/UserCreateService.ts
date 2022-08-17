@@ -1,28 +1,23 @@
+import IUserValidation from '@interface/domain/helper/UserValidationTypes';
+import IUserRepository from '@interface/domain/Repository/RepositoryTypes';
+import IUserCreate from '@interface/domain/services/UserCreateTypes';
+import IUser from '@interface/UserTypes';
 import { inject, injectable } from 'tsyringe';
-import IUserCreate from '../../../interface/domain/services/UserCreateTypes';
-import IUser from '../../../interface/UserTypes';
-import IUserRepository from '../../../interface/domain/Repository/RepositoryTypes';
-import IUserValidation from '../../../interface/domain/helper/UserValidationTypes';
 
 @injectable()
 export default class UserService implements IUserCreate {
-  userRepository: IUserRepository;
-  validation: IUserValidation;
-
   constructor(
-    @inject('UserRepository') userRepository: IUserRepository,
-    @inject('Validation') validation: IUserValidation,
-  ) {
-    this.userRepository = userRepository;
-    this.validation = validation;
-  }
+    @inject('UserRepository') private userRepository: IUserRepository,
+    @inject('Validation') private validation: IUserValidation,
+  ) {}
 
-  userCreate(newUser: IUser): void {
+  public userCreate(body: IUser): IUser {
     this.validation.validate(
-      newUser.cpf,
-      newUser.email,
+      body.cpf,
+      body.email,
       this.userRepository.database,
     );
-    this.userRepository.create(newUser);
+
+    return this.userRepository.create(body);
   }
 }

@@ -1,22 +1,24 @@
+import IController from '@interface/domain/controller/IController';
+import IUserCreate from '@interface/domain/services/UserCreateTypes';
+import StatusError from '@util/StatusError';
 import { Request, Response, NextFunction } from 'express';
 import { inject, injectable } from 'tsyringe';
-import IController from '../../interface/domain/controller/IController';
-import IUserCreate from '../../interface/domain/services/UserCreateTypes';
 
 @injectable()
 export default class UserController implements IController {
-  userService: IUserCreate;
-  constructor(@inject('UserService') userService: IUserCreate) {
-    this.userService = userService;
-  }
+  constructor(@inject('UserService') private userService: IUserCreate) {}
 
-  handle(req: Request, res: Response, next: NextFunction): void {
+  public handle(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Response | void {
     try {
       const { body } = req;
-      this.userService.userCreate(body);
-      res.status(201).json('Usuário Criado');
+      const newUser = this.userService.userCreate(body);
+      return res.status(201).json(newUser);
     } catch (error) {
-      next(error);
+      next(new StatusError(422, `${error}`));
     }
   }
 }

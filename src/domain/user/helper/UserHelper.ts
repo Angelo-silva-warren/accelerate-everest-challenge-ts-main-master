@@ -1,9 +1,9 @@
-import IHelper from '../../../interface/domain/helper/HelperTypes';
-import IUser from '../../../interface/UserTypes';
-import StatusError from '../../../util/StatusError';
+import IHelper from '@interface/domain/helper/HelperTypes';
+import IUser from '@interface/UserTypes';
+import StatusError from '@util/StatusError';
 
 export default class UserHelper implements IHelper {
-  checkIfEquals(
+  public checkIfEquals(
     field: string,
     fieldName: keyof IUser,
     database: IUser[],
